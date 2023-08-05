@@ -1,118 +1,339 @@
-import Image from 'next/image'
-import { Inter } from 'next/font/google'
+import { useEffect, useRef, useState } from "react";
 
-const inter = Inter({ subsets: ['latin'] })
-
-export default function Home() {
-  return (
-    <main
-      className={`flex min-h-screen flex-col items-center justify-between p-24 ${inter.className}`}
-    >
-      <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">src/pages/index.tsx</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
-
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700/10 after:dark:from-sky-900 after:dark:via-[#0141ff]/40 before:lg:h-[360px]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className="mb-32 grid text-center lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Docs{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Learn{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Templates{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Discover and deploy boilerplate example Next.js&nbsp;projects.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Deploy{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
-  )
+const Searchinput = () => {
 }
+
+
+
+
+const Menu = (props) => {
+    const { children, items } = props
+    const [isOpened, setIsOpened] = useState(false)
+    return (
+        <div className="">
+            <button className="w-full flex items-center justify-between text-gray-600 p-2 rounded-lg  hover:bg-gray-50 active:bg-gray-100 duration-150"
+                onClick={() => setIsOpened(!isOpened)}
+            >
+                <div className="flex items-center gap-x-2">
+                    {children}
+                </div>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className={`w-5 h-5 duration-150 ${isOpened ? 'rotate-180' : ''}`}>
+                    <path fillRule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clipRule="evenodd" />
+                </svg>
+            </button>
+            {
+                isOpened ? (
+                    <ul className="mx-4 px-2 border-l text-sm font-medium">
+                        {
+                            items.map((item, idx) => (
+                                <li key={idx}>
+                                    <a href={item.href} className="flex items-center gap-x-2 text-gray-600 p-2 rounded-lg  hover:bg-gray-50 active:bg-gray-100 duration-150">
+                                        {
+                                            item.icon ? (
+                                                <div className="text-gray-500">{item.icon}</div>
+                                            ) : ""
+                                        }
+                                        {item.name}
+                                    </a>
+                                </li>
+                            ))
+                        }
+                    </ul>
+                ) : ""
+            }
+        </div>
+    )
+}
+
+const Sidebar = () => {
+
+    const navigation = [
+
+        
+        {
+            href: 'javascript:void(0)',
+            //name: 'DisabledButton',
+            icon: (
+                <button className="px-12 py-2 text-cyan-700 border border-white rounded-l-lg rounded-r-full duration-100 hover:border-cyan-700 active:shadow-lg">
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    fill="none"
+    viewBox="0 0 24 24"
+    strokeWidth={1.5}
+    stroke="currentColor"
+    className="w-5 h-5 inline-block mr-2"
+  >
+    <path strokeLinecap="round" strokeLinejoin="round" d="M6 6.878V6a2.25 2.25 0 012.25-2.25h7.5A2.25 2.25 0 0118 6v.878m-12 0c.235-.083.487-.128.75-.128h10.5c.263 0 .515.045.75.128m-12 0A2.25 2.25 0 004.5 9v.878m13.5-3A2.25 2.25 0 0119.5 9v.878m0 0a2.246 2.246 0 00-.75-.128H5.25c-.263 0-.515.045-.75.128m15 0A2.25 2.25 0 0121 12v6a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 18v-6c0-.98.626-1.813 1.5-2.122" />
+  </svg>
+  Anasayfa
+</button>
+            ),
+          },
+
+        {
+            href: 'javascript:void(0)',
+            //name: 'DisabledButton',
+            icon: (
+                <button className="px-12 py-2 text-cyan-700 border border-white rounded-l-lg rounded-r-full duration-100 hover:border-cyan-700 active:shadow-lg">
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    fill="none"
+    viewBox="0 0 24 24"
+    strokeWidth={1.5}
+    stroke="currentColor"
+    className="w-5 h-5 inline-block mr-2"
+  >
+    <path strokeLinecap="round" strokeLinejoin="round" d="M6 6.878V6a2.25 2.25 0 012.25-2.25h7.5A2.25 2.25 0 0118 6v.878m-12 0c.235-.083.487-.128.75-.128h10.5c.263 0 .515.045.75.128m-12 0A2.25 2.25 0 004.5 9v.878m13.5-3A2.25 2.25 0 0119.5 9v.878m0 0a2.246 2.246 0 00-.75-.128H5.25c-.263 0-.515.045-.75.128m15 0A2.25 2.25 0 0121 12v6a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 18v-6c0-.98.626-1.813 1.5-2.122" />
+  </svg>
+  Derslerim
+</button>
+            ),
+          },
+
+      {
+        href: 'javascript:void(0)',
+        //name: 'ActiveButton',
+        icon: (
+          <button className="px-12 py-2 flex items-center gap-2 text-white bg-cyan-700 rounded-l-lg rounded-r-full duration-150 hover:bg-cyan-700 active:shadow-lg">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M6 6.878V6a2.25 2.25 0 012.25-2.25h7.5A2.25 2.25 0 0118 6v.878m-12 0c.235-.083.487-.128.75-.128h10.5c.263 0 .515.045.75.128m-12 0A2.25 2.25 0 004.5 9v.878m13.5-3A2.25 2.25 0 0119.5 9v.878m0 0a2.246 2.246 0 00-.75-.128H5.25c-.263 0-.515.045-.75.128m15 0A2.25 2.25 0 0121 12v6a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 18v-6c0-.98.626-1.813 1.5-2.122" />
+            </svg>
+            Sınavlarım
+          </button>
+        ),
+      },
+
+      {
+        href: 'javascript:void(0)',
+        //name: 'DisabledButton',
+        icon: (
+            <button className="px-12 py-2 text-cyan-700 border border-white rounded-l-lg rounded-r-full duration-100 hover:border-cyan-700 active:shadow-lg">
+<svg
+xmlns="http://www.w3.org/2000/svg"
+fill="none"
+viewBox="0 0 24 24"
+strokeWidth={1.5}
+stroke="currentColor"
+className="w-5 h-5 inline-block mr-2"
+>
+<path strokeLinecap="round" strokeLinejoin="round" d="M6 6.878V6a2.25 2.25 0 012.25-2.25h7.5A2.25 2.25 0 0118 6v.878m-12 0c.235-.083.487-.128.75-.128h10.5c.263 0 .515.045.75.128m-12 0A2.25 2.25 0 004.5 9v.878m13.5-3A2.25 2.25 0 0119.5 9v.878m0 0a2.246 2.246 0 00-.75-.128H5.25c-.263 0-.515.045-.75.128m15 0A2.25 2.25 0 0121 12v6a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 18v-6c0-.98.626-1.813 1.5-2.122" />
+</svg>
+Ödevlerim
+</button>
+        ),
+      },
+
+      {
+        href: 'javascript:void(0)',
+        //name: 'DisabledButton',
+        icon: (
+            <button className="px-12 py-2 text-cyan-700 border border-white rounded-l-lg rounded-r-full duration-100 hover:border-cyan-700 active:shadow-lg">
+<svg
+xmlns="http://www.w3.org/2000/svg"
+fill="none"
+viewBox="0 0 24 24"
+strokeWidth={1.5}
+stroke="currentColor"
+className="w-5 h-5 inline-block mr-2"
+>
+<path strokeLinecap="round" strokeLinejoin="round" d="M6 6.878V6a2.25 2.25 0 012.25-2.25h7.5A2.25 2.25 0 0118 6v.878m-12 0c.235-.083.487-.128.75-.128h10.5c.263 0 .515.045.75.128m-12 0A2.25 2.25 0 004.5 9v.878m13.5-3A2.25 2.25 0 0119.5 9v.878m0 0a2.246 2.246 0 00-.75-.128H5.25c-.263 0-.515.045-.75.128m15 0A2.25 2.25 0 0121 12v6a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 18v-6c0-.98.626-1.813 1.5-2.122" />
+</svg>
+Öğrenciler
+</button>
+        ),
+      },
+
+      {
+        href: 'javascript:void(0)',
+        //name: 'DisabledButton',
+        icon: (
+            <button className="px-12 py-2 text-cyan-700 border border-white rounded-l-lg rounded-r-full duration-100 hover:border-cyan-700 active:shadow-lg">
+<svg
+xmlns="http://www.w3.org/2000/svg"
+fill="none"
+viewBox="0 0 24 24"
+strokeWidth={1.5}
+stroke="currentColor"
+className="w-5 h-5 inline-block mr-2"
+>
+<path strokeLinecap="round" strokeLinejoin="round" d="M6 6.878V6a2.25 2.25 0 012.25-2.25h7.5A2.25 2.25 0 0118 6v.878m-12 0c.235-.083.487-.128.75-.128h10.5c.263 0 .515.045.75.128m-12 0A2.25 2.25 0 004.5 9v.878m13.5-3A2.25 2.25 0 0119.5 9v.878m0 0a2.246 2.246 0 00-.75-.128H5.25c-.263 0-.515.045-.75.128m15 0A2.25 2.25 0 0121 12v6a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 18v-6c0-.98.626-1.813 1.5-2.122" />
+</svg>
+Kurslarım
+</button>
+        ),
+      },
+
+      {
+        href: 'javascript:void(0)',
+        //name: 'DisabledButton',
+        icon: (
+            <button className="px-12 py-2 text-cyan-700 border border-white rounded-l-lg rounded-r-full duration-100 hover:border-cyan-700 active:shadow-lg">
+<svg
+xmlns="http://www.w3.org/2000/svg"
+fill="none"
+viewBox="0 0 24 24"
+strokeWidth={1.5}
+stroke="currentColor"
+className="w-5 h-5 inline-block mr-2"
+>
+<path strokeLinecap="round" strokeLinejoin="round" d="M6 6.878V6a2.25 2.25 0 012.25-2.25h7.5A2.25 2.25 0 0118 6v.878m-12 0c.235-.083.487-.128.75-.128h10.5c.263 0 .515.045.75.128m-12 0A2.25 2.25 0 004.5 9v.878m13.5-3A2.25 2.25 0 0119.5 9v.878m0 0a2.246 2.246 0 00-.75-.128H5.25c-.263 0-.515.045-.75.128m15 0A2.25 2.25 0 0121 12v6a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 18v-6c0-.98.626-1.813 1.5-2.122" />
+</svg>
+Devamsızlık
+</button>
+        ),
+      },
+
+      {
+        href: 'javascript:void(0)',
+        //name: 'DisabledButton',
+        icon: (
+            <button className="px-12 py-2 text-cyan-700 border border-white rounded-l-lg rounded-r-full duration-100 hover:border-cyan-700 active:shadow-lg">
+<svg
+xmlns="http://www.w3.org/2000/svg"
+fill="none"
+viewBox="0 0 24 24"
+strokeWidth={1.5}
+stroke="currentColor"
+className="w-5 h-5 inline-block mr-2"
+>
+<path strokeLinecap="round" strokeLinejoin="round" d="M6 6.878V6a2.25 2.25 0 012.25-2.25h7.5A2.25 2.25 0 0118 6v.878m-12 0c.235-.083.487-.128.75-.128h10.5c.263 0 .515.045.75.128m-12 0A2.25 2.25 0 004.5 9v.878m13.5-3A2.25 2.25 0 0119.5 9v.878m0 0a2.246 2.246 0 00-.75-.128H5.25c-.263 0-.515.045-.75.128m15 0A2.25 2.25 0 0121 12v6a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 18v-6c0-.98.626-1.813 1.5-2.122" />
+</svg>
+Görevler
+</button>
+        ),
+      },
+
+      {
+        href: 'javascript:void(0)',
+        //name: 'DisabledButton',
+        icon: (
+            <button className="px-12 py-2 text-cyan-700 border border-white rounded-l-lg rounded-r-full duration-100 hover:border-cyan-700 active:shadow-lg">
+<svg
+xmlns="http://www.w3.org/2000/svg"
+fill="none"
+viewBox="0 0 24 24"
+strokeWidth={1.5}
+stroke="currentColor"
+className="w-5 h-5 inline-block mr-2"
+>
+<path strokeLinecap="round" strokeLinejoin="round" d="M6 6.878V6a2.25 2.25 0 012.25-2.25h7.5A2.25 2.25 0 0118 6v.878m-12 0c.235-.083.487-.128.75-.128h10.5c.263 0 .515.045.75.128m-12 0A2.25 2.25 0 004.5 9v.878m13.5-3A2.25 2.25 0 0119.5 9v.878m0 0a2.246 2.246 0 00-.75-.128H5.25c-.263 0-.515.045-.75.128m15 0A2.25 2.25 0 0121 12v6a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 18v-6c0-.98.626-1.813 1.5-2.122" />
+</svg>
+Not giriş
+</button>
+        ),
+      },
+
+      {
+        href: 'javascript:void(0)',
+        //name: 'DisabledButton',
+        icon: (
+            <button className="px-12 py-2 text-cyan-700 border border-white rounded-l-lg rounded-r-full duration-100 hover:border-cyan-700 active:shadow-lg">
+<svg
+xmlns="http://www.w3.org/2000/svg"
+fill="none"
+viewBox="0 0 24 24"
+strokeWidth={1.5}
+stroke="currentColor"
+className="w-5 h-5 inline-block mr-2"
+>
+<path strokeLinecap="round" strokeLinejoin="round" d="M6 6.878V6a2.25 2.25 0 012.25-2.25h7.5A2.25 2.25 0 0118 6v.878m-12 0c.235-.083.487-.128.75-.128h10.5c.263 0 .515.045.75.128m-12 0A2.25 2.25 0 004.5 9v.878m13.5-3A2.25 2.25 0 0119.5 9v.878m0 0a2.246 2.246 0 00-.75-.128H5.25c-.263 0-.515.045-.75.128m15 0A2.25 2.25 0 0121 12v6a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 18v-6c0-.98.626-1.813 1.5-2.122" />
+</svg>
+Aferin Modül
+</button>
+        ),
+      },
+    ]
+
+    const navsFooter = [
+        
+    ]
+
+    const nestedNavOne = [{ name: "Item1", href: "javascript:void(0)", icon: "" }, { name: "Item2", href: "javascript:void(0)", icon: "" }, { name: "Item3", href: "javascript:void(0)", icon: "" }, { name: "Item4", href: "javascript:void(0)", icon: "" }]
+    const nestedNavTwo = [{ name: "Item1", href: "javascript:void(0)", icon: "" }, { name: "Item2", href: "javascript:void(0)", icon: "" }, { name: "Item3", href: "javascript:void(0)", icon: "" }, { name: "Item4", href: "javascript:void(0)", icon: "" }]
+
+    const profileRef = useRef()
+
+    const [isProfileActive, setIsProfileActive] = useState(false)
+
+    useEffect(() => {
+        const handleProfile = (e) => {
+            if (profileRef.current && !profileRef.current.contains(e.target)) setIsProfileActive(false)
+        }
+        document.addEventListener('click', handleProfile)
+    }, [])
+
+    return (
+        <>
+            <nav
+                className="fixed top-0 left-0 w-full h-full border-r bg-white space-y-8 sm:w-80">
+                  
+                <div class="flex flex-col h-full px-4">
+                
+                <div className="flex flex-col items-center">
+                <img src="https://t3.ftcdn.net/jpg/04/91/71/52/360_F_491715288_s6Lm6mhNUFIpZldYH5uJZfs3lT399ZEv.webp" className="w-26 h-17 rounded-full mb-2" />
+                <div className="relative">
+  <img src="https://randomuser.me/api/portraits/women/79.jpg" className="w-16 h-16 rounded-full mb-2" />
+  <div className="absolute inset-0 w-16 h-16 rounded-full border-4 border-solid border-cyan-700/40"></div>
+</div>
+
+                  <div className="text-center">
+                      <span className="block text-gray-700 text-sm font-semibold">Ayşe Beyza Öztürk</span>
+                      <span className="block mt-px text-gray-600 text-xs">Fen Bilimleri ve Teknoloji</span>
+                      <ul className="mt-2 space-y-2">
+                      <li className="px-12 py-2 flex items-center gap-2 text-white bg-cyan-700 rounded-xl duration-150 hover:bg-cyan-700 active:shadow-lg">
+  <Menu items={nestedNavOne}>
+    <span className="text-white">2023-2024</span>
+  </Menu>
+</li>
+<li className="px-12 py-2 flex items-center gap-2 text-white bg-cyan-700 rounded-xl duration-150 hover:bg-cyan-700 active:shadow-lg">
+  <Menu items={nestedNavTwo}>
+    <span className="text-white">Kurum Seç</span>
+  </Menu>
+</li>
+  </ul>
+                  </div>
+
+                   
+                </div>
+
+                    <div className="overflow-auto">
+                        <ul className="text-sm font-medium flex-1">
+                            {
+                                navigation.map((item, idx) => (
+                                    <li key={idx}>
+                                        <a href={item.href} className="flex items-center gap-x-2 text-gray-600 p-2 rounded-lg  hover:bg-gray-50 active:bg-gray-100 duration-150">
+                                            <div className="text-gray-500">{item.icon}</div>
+                                            {item.name}
+                                        </a>
+                                    </li>
+                                ))
+                            }
+                            
+                        </ul>
+                        <div className="pt-2 mt-2 border-t">
+                            <ul className="text-sm font-medium">
+                                {
+                                    navsFooter.map((item, idx) => (
+                                        <li key={idx}>
+                                            <a href={item.href} className="flex items-center gap-x-2 text-gray-600 p-2 rounded-lg  hover:bg-gray-50 active:bg-gray-100 duration-150">
+                                                <div className="text-gray-500">{item.icon}</div>
+                                                {item.name}
+                                            </a>
+                                        </li>
+                                    ))
+                                }
+                            </ul>
+                        </div>
+                    </div >
+                </div>
+            </nav>
+        </>
+    );
+};
+
+
+
+
+
+export default Sidebar;
+
